@@ -39,4 +39,4 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: token ${{ secrets.REPO_PAT }}" \
           https://api.github.com/repos/harith-bechkam/minikube_deployments/actions/workflows/backend.yml/dispatches \
-          -d '{"ref":"master", "inputs": {"version_tag": "${{ env.VERSION_TAG }}", "commit_message": "${{ github.event.head_commit.message }}"}}'
+          -d '{"ref":"main", "inputs": {"version_tag": "${{ env.VERSION_TAG }}", "commit_message": "${{ github.event.head_commit.message }}"}}'
