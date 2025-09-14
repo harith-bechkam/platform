@@ -17,7 +17,7 @@ function App() {
     setName("");
   };
 
-  return (
+  return ( 
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
       <input
         value={name}
