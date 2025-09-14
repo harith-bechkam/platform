@@ -6,7 +6,7 @@ var BE_URL = `${process.env.REACT_APP_BE_URL}`;
 function App() {
   const [name, setName] = useState("");
   const [items, setItems] = useState([]); 
-  useEffect(() => {
+  useEffect(() => { 
     axios.get(`${BE_URL}/api/items`).then((res) => setItems(res.data));
   }, []);
 
