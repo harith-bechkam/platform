@@ -13,7 +13,7 @@ function App() {
   const handleSave = async () => {
     if (!name.trim()) return;
     const res = await axios.post(`${BE_URL}/api/items`, { name });
-    setItems([...items, res.data]);
+    setItems([...items, res.data]); 
     setName("");
   };
 

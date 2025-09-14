@@ -8,13 +8,13 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(express.json());    
+app.use(express.json());
 
 
 mongoose
-    .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })  
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB connected"))
-    .catch((err) => console.error("MongoDB error", err));    
+    .catch((err) => console.error("MongoDB error", err));
 
 const ItemSchema = new mongoose.Schema({ name: String });
 const Item = mongoose.model("Item", ItemSchema);
@@ -27,6 +27,10 @@ app.post("/api/items", async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
+});
+
+app.get("/", async (req, res) => {
+    res.send("running");
 });
 
 app.get("/api/items", async (req, res) => {
