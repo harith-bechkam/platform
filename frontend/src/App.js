@@ -18,7 +18,7 @@ function App() {
   };
 
   return ( 
-    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}> 
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>  
       <input
         value={name}
         onChange={(e) => setName(e.target.value)}
