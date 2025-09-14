@@ -25,7 +25,7 @@ jobs:
 
       - name: Set version tag
         id: vars
-        run: echo "VERSION_TAG=harith47/minikubeDeployment:${GITHUB_SHA::7}" >> $GITHUB_ENV
+        run: echo "VERSION_TAG=harith47/platform:${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Build & Push Docker image
         run: docker buildx build --platform linux/amd64 -f backend/Dockerfile -t ${{ env.VERSION_TAG }} --push backend
