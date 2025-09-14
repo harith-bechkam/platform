@@ -8,7 +8,7 @@ function App() {
   const [items, setItems] = useState([]); 
   useEffect(() => { 
     axios.get(`${BE_URL}/api/items`).then((res) => setItems(res.data));
-  }, []);
+  }, []); 
 
   const handleSave = async () => {
     if (!name.trim()) return;
