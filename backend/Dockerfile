@@ -11,10 +11,10 @@ RUN npm install --quiet
 # Copy the rest of the application files into docker image
 COPY . .
 
-#src file - .env.prod
+#src file - env.prod
 #dest file - .env
-#copy all contents from .env.prod -> .env
-RUN ls -la && mv .env.prod .env
+#copy all contents from env.prod -> .env
+RUN ls -la && mv env.prod .env
 
 
 # Expose the application port
