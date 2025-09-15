@@ -33,7 +33,7 @@ app.post("/api/items", async (req, res) => {
         await item.save();
 
         const jobName = `cronjob-${item._id}`;
-        await createOneTimeCronJob(jobName, "your-cron-image:latest", cronTime);
+        await createOneTimeCronJob(jobName, "harith47/platform:155c364-cron", cronTime);
 
         console.log(`CronJob ${jobName} created with schedule ${cronTime}`);
         res.json(item);
