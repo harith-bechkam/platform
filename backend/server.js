@@ -3,8 +3,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-
+const { createOneTimeCronJob } = require("./kube");
 dotenv.config();
+
+
 const app = express();
 
 app.use(cors());
@@ -21,13 +23,26 @@ const Item = mongoose.model("Item", ItemSchema);
 
 app.post("/api/items", async (req, res) => {
     try {
-        const item = new Item({ name: req.body.name });
+        const { name, cronTime } = req.body;
+
+        if (!name || !cronTime) {
+            return res.status(400).json({ error: "Name and cronTime are required" });
+        }
+
+        const item = new Item({ name, cronTime });
         await item.save();
+
+        const jobName = `cronjob-${item._id}`;
+        await createOneTimeCronJob(jobName, "your-cron-image:latest", cronTime);
+
+        console.log(`CronJob ${jobName} created with schedule ${cronTime}`);
         res.json(item);
     } catch (err) {
+        console.error(err);
         res.status(500).json({ error: err.message });
     }
 });
+
 
 app.get("/", async (req, res) => {
     res.send("running");
