@@ -22,7 +22,7 @@ const Item = mongoose.model("Item", ItemSchema);
 
 app.post("/api/items", async (req, res) => {
     try {
-        const { name } = req.body;
+        const { name } = req.body; 
 
         if (!name) {
             return res.status(400).json({ error: "Name required" });
