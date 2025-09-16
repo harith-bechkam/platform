@@ -24,6 +24,7 @@ function App() {
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <p>Hi</p>
       <input
         value={name}
         onChange={(e) => setName(e.target.value)}
