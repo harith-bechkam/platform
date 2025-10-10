@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 
 
 mongoose
@@ -22,7 +22,7 @@ const Item = mongoose.model("Item", ItemSchema);
 
 app.post("/api/items", async (req, res) => {
     try {
-        const { name } = req.body; 
+        const { name } = req.body;
 
         if (!name) {
             return res.status(400).json({ error: "Name required" });
@@ -40,7 +40,7 @@ app.post("/api/items", async (req, res) => {
 
 
 app.get("/", async (req, res) => {
-    res.send("running");
+    res.send("running" + new Date());
 });
 
 app.get("/api/items", async (req, res) => {
